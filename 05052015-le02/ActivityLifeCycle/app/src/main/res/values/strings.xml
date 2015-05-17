@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="on_create">onCreate() calls: </string>
+    <string name="on_start">onStart() calls: </string>
+    <string name="on_resume">onResume() calls: </string>
+    <string name="on_restart">onRestart() calls: </string>
+    <string name="start_activity_two">Start activity two</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_secondary">Secondary</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>
