@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Adapters</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="nhlItems">
+        <item>Anaheim Ducks</item>
+        <item>Arizona Coyotes</item>
+        <item>Boston Bruins</item>
+        <item>Buffalo Sabres</item>
+        <item>Calgary Flames</item>
+        <item>Carolina Hurricanes</item>
+        <item>Chicago Blackhawks</item>
+        <item>Colorado Avalanche</item>
+        <item>Columbus Blue Jackets</item>
+    </string-array>
+</resources>

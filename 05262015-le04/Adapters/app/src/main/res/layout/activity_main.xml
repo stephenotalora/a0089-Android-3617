@@ -7,16 +7,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/dataView"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"/>
+        android:layout_height="wrap_content"></Spinner>
 
-    <Button
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Increment"
-        android:id="@+id/increment" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
