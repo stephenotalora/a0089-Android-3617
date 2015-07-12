@@ -21,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Iterator;
 
 /**
  * THIS IS A REST SAMPLE FROM CLASS # 8.
@@ -29,7 +30,7 @@ public class MainActivity extends Activity implements Button.OnClickListener {
     private EditText editTextView;
     private Button searchButton;
     private TextView textView;
-    private static final String GOOGLE_AJAX_SEARCH_URL = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0";
+    private static final String GOOGLE_AJAX_SEARCH_URL = "http://petstore.swagger.io/v2/store/inventory"; //"http://ajax.googleapis.com/ajax/services/search/web?v=1.0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class MainActivity extends Activity implements Button.OnClickListener {
             String results = "No Results...";
 
             try {
-                String queryString = GOOGLE_AJAX_SEARCH_URL + "&q=" + URLEncoder.encode(searchInput, "UTF-8");
+                String queryString = GOOGLE_AJAX_SEARCH_URL; //+ "&q=" + URLEncoder.encode(searchInput, "UTF-8");
                 URL url = new URL(queryString);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -116,15 +117,31 @@ public class MainActivity extends Activity implements Button.OnClickListener {
         private String parseJSONSearchResult(StringBuilder stringBuilder) throws Exception {
             StringBuilder builder = new StringBuilder();
 
+            /*
+             {
+                  "sold": 42,
+                  "test": 6,
+                  "string": 25,
+                  "pending": 7,
+                  "available": 1508,
+                  "myStatus": 1
+                }
+            */
             JSONObject data = new JSONObject(stringBuilder.toString());
-            JSONObject responseData = data.getJSONObject("responseData");
-            JSONArray results = responseData.getJSONArray("results");
-
-            for (int i=0; i < results.length(); ++i) {
-                String content = results.getJSONObject(i).getString("content");
-                String formattedContent = (i + 1) + ". " + content + "\n";
-                builder.append(formattedContent);
+            Iterator<String> iterator = data.keys();
+            while(iterator.hasNext()) {
+                String key = iterator.next();
+                builder.append(key).append(" : ").append(data.get(key)).append("\n");
             }
+            //builder.append("{\n").append(data.get("sold"));
+//            JSONObject responseData = data.getJSONObject("responseData");
+//            JSONArray results = responseData.getJSONArray("results");
+//
+//            for (int i=0; i < results.length(); ++i) {
+//                String content = results.getJSONObject(i).getString("content");
+//                String formattedContent = (i + 1) + ". " + content + "\n";
+//                builder.append(formattedContent);
+//            }
 
             return builder.toString();
         }
