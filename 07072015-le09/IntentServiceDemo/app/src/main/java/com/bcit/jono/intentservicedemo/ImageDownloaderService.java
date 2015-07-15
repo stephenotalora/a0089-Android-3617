@@ -34,7 +34,8 @@ public class ImageDownloaderService extends IntentService {
         String urlToDownload = intent.getStringExtra(MainActivity.IMAGE_DOWNLOAD_KEY);
         HttpURLConnection conn = null;
         int random = new Random().nextInt();
-        String downloadLocation = getCacheDir() + File.pathSeparator +String.format("%d.jpg", random);
+//        String downloadLocation = getCacheDir() + File.pathSeparator +String.format("%d.jpg", random);
+        String downloadLocation = getCacheDir() + File.pathSeparator +String.format("%d.mp4", random);
         try {
             URL url = new URL(urlToDownload);
             conn = (HttpURLConnection)url.openConnection();
